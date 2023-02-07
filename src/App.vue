@@ -1,6 +1,6 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img alt="Vue logo" src="./assets/logo.png" id="logo-home" />
+  <HelloWorld msg="Bem vindo ao Polo da Sorte" />
 </template>
 
 <script>
@@ -22,5 +22,17 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  
+}
+
+body {
+  background-color: #DAE2DF;
+}
+
+
+
+#logo-home {
+  width: 15%;
+  height: 15%;
 }
 </style>

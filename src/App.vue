@@ -1,6 +1,8 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" id="logo-home" />
-  <HelloWorld msg="Bem vindo ao Polo da Sorte" />
+  <div>
+    <img alt="Vue logo" src="./assets/logo.png" id="logo-home" />
+    <HelloWorld msg="Bem vindo ao Polo da Sorte" />
+  </div>
 </template>
 
 <script>

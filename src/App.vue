@@ -2,16 +2,21 @@
   <div>
     <img alt="Vue logo" src="./assets/logo.png" id="logo-home" />
     <Login msg="Bem vindo ao Polo da Sorte" />
+    <InicioSorte />
   </div>
 </template>
 
 <script>
+import InicioSorte from './components/InicioSorte.vue'
 import Login from './components/Login.vue'
+
 
 export default {
   name: 'App',
   components: {
-    Login
+    Login,
+    InicioSorte
+    
   }
 }
 </script>

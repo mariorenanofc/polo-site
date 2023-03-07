@@ -1,24 +1,33 @@
 <template>
   <div>
     <img alt="Vue logo" src="./assets/logo.png" id="logo-home" />
-    <HelloWorld msg="Bem vindo ao Polo da Sorte" />
+    <Login msg="Bem vindo ao Polo da Sorte" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Login from './components/Login.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Login
   }
 }
 </script>
 
 <style>
+@font-face {
+    font-family: "Montserrat Italic";
+    src: url("@/assets/fonts/Montserrat-Italic-VariableFont_wght.ttf");
+
+    font-family: "Lexend Deca";
+    src: url(@/assets/fonts/LexendDeca-VariableFont_wght.ttf);
+    
+  }
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Montserrat Italic";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

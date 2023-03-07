@@ -1,5 +1,4 @@
-
-  <template>
+<template>
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Sorteios todo mês</h2>
@@ -24,13 +23,13 @@
           placeholder="Digite sua senha"
         />
       </div>
+      <p class="error-message" v-if="showErrorMessage">{{ errorMessage }}</p>
       <button class="login-button" v-on:click="entrar">Entrar</button>
       <p class="forgot-password">{{ EsqueceuSenha }} Esqueceu a Senha</p>
       <p class="create-user">{{ createUser }} Cadastre-se Aqui!</p>
     </form>
   </div>
 </template>
-
 
 <script>
 export default {
@@ -43,6 +42,8 @@ export default {
     return {
       username: "",
       password: "",
+      showErrorMessage: false,
+      errorMessage: "Usuário ou senha incorretos, tente novamente!"
     };
   },
   methods: {
@@ -50,7 +51,10 @@ export default {
       if (this.username === "admin" && this.password === "admin") {
         alert("Login realizado com sucesso!");
       } else {
-        alert("Usuário ou senha incorretos, tente novamente!");
+        this.showErrorMessage = true;
+        setTimeout(() => {
+          this.showErrorMessage = false;
+        }, 10000);
       }
     },
   },
@@ -61,7 +65,7 @@ export default {
 <style scoped>
 
 .container-titulo{
-  font-family: 'Inter';
+  font-family: 'Montserrat Italic';
   color: #1E6A2D;
   font-size: 4vh;
   text-transform: uppercase;
@@ -82,6 +86,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: "Lexend Deca";
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -127,6 +132,16 @@ export default {
   color: #239267;
 }
 
+
+.error-message {
+  display: block;
+  margin-top: 8px;
+  padding: 4px;
+  color: #dc3545;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
 .login-button {
   padding: 10px 50px;
   background-color: #42b983;
@@ -143,6 +158,7 @@ export default {
 .login-form .forgot-password,
 .login-form .create-user {
   color: #1E6A2D;
+  margin: 16px 0 0 0;
 }
 
 .login-button:hover {
@@ -167,56 +183,59 @@ export default {
   cursor: pointer;
 }
 
-/* Estilos para dispositivos com largura máxima de 768px */
-@media screen and (max-width: 768px) {
-  .input-group {
-    flex-direction: column;
-    margin-bottom: 10px;
+/* Estilos para dispositivos com largura mínima de 280px */
+@media screen and (max-width: 280px) {
+  .hello {
+    font-size: 10px;
   }
-  label {
-    margin-bottom: 5px;
+  .hello h1, h2 {
+    display: none;
+  }
+
+  .container-titulo {
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  .input-group input {
+    padding: 8px 30px;
+    max-width: 200px;
+    font-size: 14px;
+  }
+  .login-button {
+    padding: 8px 40px;
+    font-size: 16px;
+  }
+  .forgot-password,
+  .create-user {
+    font-size: 12px;
   }
 }
-/* Estilos para dispositivos com largura mínima de 769px */
-@media screen and (min-width: 769px) {
-  .input-group {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+
+/* Estilos para dispositivos com largura mínima de 450px */
+@media screen and (max-width: 450px ) {
+  .hello {
+    font-size: 12px;
   }
-  label {
-    width: 30%;
-    margin-right: 10px;
-    text-align: right;
+  .hello h1, h2 {
+    display: none;
   }
-  input {
-    width: 65%;
+  .container-titulo {
+    font-size: 28px;
+    letter-spacing: 2px;
+  }
+  .input-group input {
+    padding: 10px 35px;
+    max-width: 250px;
+    font-size: 16px;
+  }
+  .login-button {
+    padding: 10px 50px;
+    font-size: 18px;
+  }
+  .forgot-password,
+  .create-user {
+    font-size: 14px;
   }
 }
-button {
-  background-color: #42b983;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #239267;
-}
-.forgot-password,
-.register,
-.create-user {
-  font-size: 12px;
-  margin-top: 5px;
-}
-.forgot-password {
-  text-align: center;
-  text-decoration: underline;
-}
-.register,
-.create-user {
-  text-align: center;
-}
+
 </style>

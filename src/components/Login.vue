@@ -24,7 +24,10 @@
         />
       </div>
       <p class="error-message" v-if="showErrorMessage">{{ errorMessage }}</p>
-      <button class="login-button" v-on:click="entrar">Entrar</button>
+      <button class="login-button" v-on:click="entrar">
+        <span v-if="loading">⏳ Carregando...</span>
+        <span v-else>Entrar</span>
+      </button>
       <p class="forgot-password">{{ EsqueceuSenha }} Esqueceu a Senha</p>
       <p class="create-user">{{ createUser }} Cadastre-se Aqui!</p>
     </form>
@@ -43,18 +46,27 @@ export default {
       username: "",
       password: "",
       showErrorMessage: false,
-      errorMessage: "Usuário ou senha incorretos, tente novamente!"
+      errorMessage: "Usuário ou senha incorretos, tente novamente!",
+      loading: false
     };
   },
   methods: {
     entrar() {
+      this.loading = true;
+
       if (this.username === "admin" && this.password === "admin") {
-        alert("Login realizado com sucesso!");
-      } else {
-        this.showErrorMessage = true;
         setTimeout(() => {
-          this.showErrorMessage = false;
-        }, 10000);
+          alert("Login realizado com sucesso!");
+          this.loading = false;
+        }, 3000);
+      } else {
+        setTimeout(() => {
+          this.showErrorMessage = true;
+          this.loading = false;
+          setTimeout(() => {
+            this.showErrorMessage = false;
+          }, 10000);
+        }, 3000);
       }
     },
   },
@@ -79,6 +91,15 @@ export default {
   justify-content: center;
   height: 100%;
   width: 100%;
+  margin-top: 10px;
+  
+}
+
+.hello h1 {
+  margin-top: 10px;
+}
+.hello h2 {
+  margin:28px 0 40px 0;
 }
 
 .login-form {
